@@ -22,5 +22,5 @@ $sms->setText('Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare conseq
 $sms->send();
 ```
 
-# Versionamento
+## Versionamento
 Utilizamos o [SemVer](https://semver.org/lang/pt-BR/) para o versionamento do projeto. A versão atual é 1.3.2.
