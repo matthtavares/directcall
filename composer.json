@@ -1,7 +1,7 @@
 {
     "name": "matthtavares/directcall",
     "description": "Biblioteca para envio de SMS do DirectCall.",
-    "version": "1.3.2",
+    "version": "1.4.8",
     "type": "library",
     "keywords": ["SMS", "DirectCall"],
     "homepage": "http://github.com/matthtavares/directcall",

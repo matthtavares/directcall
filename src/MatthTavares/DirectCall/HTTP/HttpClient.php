@@ -3,6 +3,7 @@
 namespace MatthTavares\DirectCall\HTTP;
 
 use MatthTavares\DirectCall\DirectCall;
+use MatthTavares\DirectCall\Logger;
 
 /**
  * HttpClient
@@ -41,6 +42,8 @@ class HttpClient
         $output = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
+
+        Logger::info($output);
 
         $response = new HttpResponse();
         $response->setStatusCode((int)$info['http_code']);

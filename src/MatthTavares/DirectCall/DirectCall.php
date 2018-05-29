@@ -39,6 +39,11 @@ class DirectCall
      */
     protected static $api = 'http://api.directcallsoft.com/';
 
+    /**
+     * @var string
+     */
+    protected static $logFile;
+
     public static function configure( string $id, string $secret, string $number )
     {
         self::$id = $id;
@@ -75,5 +80,37 @@ class DirectCall
     public static function endpoint( string $endpoint )
     {
         return self::$api.trim(trim($endpoint,'/'));
+    }
+
+    /**
+     * Cria um arquivo de log.
+     *
+     * @param string $path      O caminha absoluto para o arquivo.
+     * @param bool   $overwrite Informa se o arquivo pode ser sobescrito.
+     */
+    public static function setLogFile( string $path, bool $overwrite = TRUE )
+    {
+        if( is_dir($path) )
+            throw new Exception('O caminho informado não é um arquivo.');
+
+        if( $overwrite )
+            file_put_contents($path, '', LOCK_EX);
+        else
+            file_put_contents($path, '', FILE_APPEND | LOCK_EX);
+
+        if( ! is_writable($path) )
+            throw new Exception('O arquivo de log não pode ser escrito.');
+
+        self::$logFile = $path;
+    }
+
+    /**
+     * Retorna o caminho para o arquivo de log.
+     *
+     * @return string
+     */
+    public static function getLogFile()
+    {
+        return self::$logFile;
     }
 }

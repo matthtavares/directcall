@@ -1,0 +1,1 @@
+[2018-05-29 20:44:04] INFO - {"api":"sms","modulo":"enviar","status":"ok","codigo":"000","msg":"001 - Mensagem enviada com sucessso - CALLER-ID: 33294633884979","destino":["5583987240166"],"callerid":"33294633884979"}

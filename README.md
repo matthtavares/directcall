@@ -15,6 +15,9 @@ use MatthTavares\DirectCall\Services\SMS;
 // Configura o acesso a API
 DirectCall::configure('SEU_ID_DIRECTCALL', 'SEU_SECRET_DIRECTCALL', 'SEU_TELEFONE_ORIGEM');
 
+// Se quiser fazer um log com as respostas da API
+DirectCall::setLogFile('DirectCall.log');
+
 // Envia o SMS
 $sms = new SMS();
 $sms->setNumber('+558399999999');
