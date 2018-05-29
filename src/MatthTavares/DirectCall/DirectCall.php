@@ -32,6 +32,11 @@ class DirectCall
     /**
      * @var string
      */
+    protected static $access_token;
+
+    /**
+     * @var string
+     */
     protected static $api = 'http://api.directcallsoft.com/';
 
     public static function configure( string $id, string $secret, string $number )
@@ -39,21 +44,13 @@ class DirectCall
         self::$id = $id;
         self::$secret = $secret;
         self::$number = $number;
-    }
 
-    /**
-     * Retorna o token que deve ser enviado a cada requisicao.
-     *
-     * @return string
-     */
-    public static function getAccessToken()
-    {
+        // Get access_token
         $req = HttpClient::post('/request_token', [
             'client_id'      => self::$id,
             'client_secret'  => self::$secret
         ]);
-
-        return $req->getContent()['access_token'];
+        self::$access_token = $req->getContent()['access_token'];
     }
 
     /**
@@ -64,7 +61,7 @@ class DirectCall
     public static function getAccountCredentials()
     {
         return [
-            'access_token' => self::getAccessToken(),
+            'access_token' => self::$access_token,
             'origem' => self::$number
         ];
     }
